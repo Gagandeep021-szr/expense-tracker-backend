@@ -8,6 +8,9 @@ const expenseRoutes = require('./routes/expenses');
 
 const app = express();
 
+// DB Connect
+connectDB();
+
 app.use(cors({
   origin: "*"
 }));
@@ -22,10 +25,8 @@ app.get('/api/health', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-  res.send('Expense Tracker API is running');
+  res.send('API is running');
 });
-
-connectDB();
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
